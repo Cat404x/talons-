@@ -1,0 +1,110 @@
+from selenium import webdriver
+from selenium.webdriver.common.keys import Keys
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+import requests
+from bs4 import BeautifulSoup
+import pandas as pd
+import time
+import random
+from selenium.webdriver.chrome.options import Options
+
+class DataExtractor:
+    def __init__(self, use_tor=False):
+        if use_tor:
+            # Configure Chrome to use Tor
+            chrome_options = Options()
+            chrome_options.add_argument('--proxy-server=socks5://127.0.0.1:9050')
+            self.driver = webdriver.Chrome(options=chrome_options)
+        else:
+            self.driver = webdriver.Chrome()
+    
+    def scrape_website(self, url):
+        try:
+            response = requests.get(url)
+            response.raise_for_status()
+            soup = BeautifulSoup(response.content, 'html.parser')
+            paragraphs = soup.find_all('p')
+            return [p.text for p in paragraphs]
+        except requests.RequestException as e:
+            print(f"Error scraping {url}: {e}")
+            return []
+
+    def search_engine(self, query, engine="google"):
+        try:
+            if engine == "google":
+                self.driver.get("https://www.google.com")
+                search_box = self.driver.find_element(By.NAME, "q")
+            elif engine == "bing":
+                self.driver.get("https://www.bing.com")
+                search_box = self.driver.find_element(By.NAME, "q")
+            elif engine == "duckduckgo":
+                self.driver.get("https://duckduckgo.com")
+                search_box = self.driver.find_element(By.NAME, "q")
+            else:
+                raise ValueError("Unsupported search engine")
+            
+            search_box.send_keys(query)
+            search_box.send_keys(Keys.RETURN)
+
+            if engine == "google":
+                WebDriverWait(self.driver, 10).until(EC.presence_of_element_located((By.ID, "search")))
+                results = self.driver.find_elements(By.CSS_SELECTOR, "div.g")
+            elif engine == "bing":
+                WebDriverWait(self.driver, 10).until(EC.presence_of_element_located((By.ID, "b_content")))
+                results = self.driver.find_elements(By.CSS_SELECTOR, "li.b_algo")
+            elif engine == "duckduckgo":
+                WebDriverWait(self.driver, 10).until(EC.presence_of_element_located((By.ID, "links")))
+                results = self.driver.find_elements(By.CSS_SELECTOR, "div.result")
+
+            # Rate limiting
+            time.sleep(random.uniform(1, 3))
+
+            return [result.text for result in results]
+        except Exception as e:
+            print(f"Error searching {engine}: {e}")
+            return []
+
+    def save_to_csv(self, data, filename, mode='w'):
+        try:
+            df = pd.DataFrame(data)
+            df.to_csv(filename, index=False, mode=mode)
+            print(f"Data saved to {filename}")
+        except Exception as e:
+            print(f"Error saving to CSV: {e}")
+
+    def extract_product_info(self, url):
+        try:
+            soup = BeautifulSoup(requests.get(url).content, 'html.parser')
+            product = {
+                'name': soup.find('h1', class_='product-name').text.strip(),
+                'price': soup.find('span', class_='price').text.strip(),
+                'description': soup.find('div', class_='description').text.strip()
+            }
+            return product
+        except Exception as e:
+            print(f"Error extracting product info from {url}: {e}")
+            return {}
+
+    def close(self):
+        self.driver.quit()
+
+if __name__ == "__main__":
+    # Set use_tor to True if you want to use Tor network
+    extractor = DataExtractor(use_tor=False)
+    
+    # Scrape a website
+    paragraphs = extractor.scrape_website("https://example.com")
+    extractor.save_to_csv(paragraphs, "paragraphs.csv")
+    
+    # Search on DuckDuckGo
+    results = extractor.search_engine("web scraping with Python", engine="duckduckgo")
+    extractor.save_to_csv(results, "search_results.csv")
+    
+    # Extract product info
+    product_info = extractor.extract_product_info("https://example.com/product")
+    extractor.save_to_csv([product_info], "product_info.csv")
+    
+    # Close the browser
+    extractor.close()

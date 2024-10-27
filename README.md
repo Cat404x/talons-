@@ -1,5 +1,4 @@
 
-![Screenshot](https://example.com/screenshot.png)
 
 
 

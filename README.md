@@ -3,6 +3,11 @@
 
 # talons
 
+Here are the updated steps for the `README.md` file:
+
+```markdown
+# talons
+
 ## Social Media and Web Scraping Tool
 
 This Python script provides a comprehensive tool for web scraping and social media data extraction. It combines functionalities for general web scraping, search engine queries, and specific social media platform data collection.
@@ -33,32 +38,34 @@ This Python script provides a comprehensive tool for web scraping and social med
 ### Installation
 
 1. Clone this repository
-2. Install the required packages:
    ```sh
-   pip install -r requirements.txt
+   git clone https://github.com/Cat404x/talons-.git
+   cd talons-
+   ```
 
-Here are additional commands that you might find useful 
-
-1. **Create a virtual environment** (recommended to isolate dependencies):
+2. Create a virtual environment (recommended to isolate dependencies):
    ```sh
    python -m venv venv
    source venv/bin/activate  # On Windows, use `venv\Scripts\activate`
    ```
 
-2. **Upgrade pip** (to ensure you have the latest version):
+3. Upgrade pip (to ensure you have the latest version):
    ```sh
    pip install --upgrade pip
    ```
 
-3. **Install the required packages** from `requirements.txt`:
+4. Install the required packages from `requirements.txt`:
    ```sh
    pip install -r requirements.txt
    ```
 
-4. **Run the script** (if applicable):
+5. Run the script (if applicable):
    ```sh
-   python talons.py  # Replace 
+   python talons.py  # Replace 'talons.py' with the actual script name
    ```
 
 These commands should help you set up and run the Python script in the repository. If you have any specific requirements or encounter any issues, feel free to ask!
+```
+
+To update the `README.md` file in your repository, you can edit it directly in the GitHub web interface or using a local Git client. If you need help with making the update, let me know!
 

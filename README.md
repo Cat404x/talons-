@@ -57,7 +57,6 @@ This class handles general web scraping tasks and search engine queries.
 Methods:
 - `scrape_website(url)`: Extracts paragraphs from a given URL
 - `search_engine(query, engine)`: Performs a search query on specified engine
-- `save_to_csv(data, filename, mode)`: Saves data to a CSV file
 - `extract_product_info(url)`: Extracts product information from e-commerce sites
 
 ### SocialMediaScraper
@@ -84,4 +83,4 @@ Methods:
 
 ## Disclaimer
 
-This tool is for educational purposes only. Users are responsible for ensuring their use of this script complies with all applicable laws 
+This tool is for educational purposes only. Users are responsible for ensuring their use of this script complies with all applicable laws.

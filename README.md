@@ -60,7 +60,5 @@ This Python script provides a comprehensive tool for web scraping and social med
    ```
 
 These commands should help you set up and run the Python script in the repository. If you have any specific requirements or encounter any issues, feel free to ask!
-```
 
-To update the `README.md` file in your repository, you can edit it directly in the GitHub web interface or using a local Git client. If you need help with making the update, let me know!
 

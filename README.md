@@ -84,6 +84,4 @@ Methods:
 
 ## Disclaimer
 
-This tool is for educational purposes only. Users are responsible for ensuring their use of this script complies with all applicable laws and platform policies.
-
-You can now add this content to your `README.md` file in the repository.
+This tool is for educational purposes only. Users are responsible for ensuring their use of this script complies with all applicable laws 

@@ -3,11 +3,6 @@
 
 # talons
 
-Here are the updated steps for the `README.md` file:
-
-```markdown
-# talons
-
 ## Social Media and Web Scraping Tool
 
 This Python script provides a comprehensive tool for web scraping and social media data extraction. It combines functionalities for general web scraping, search engine queries, and specific social media platform data collection.

@@ -57,7 +57,7 @@ Here are additional commands that you might find useful
 
 4. **Run the script** (if applicable):
    ```sh
-   python script_name.py  # Replace 'script_name.py' with the actual script name
+   python talons.py  # Replace 'script_name.py' with the actual script name
    ```
 
 These commands should help you set up and run the Python script in the repository. If you have any specific requirements or encounter any issues, feel free to ask!

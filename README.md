@@ -36,3 +36,29 @@ This Python script provides a comprehensive tool for web scraping and social med
 2. Install the required packages:
    ```sh
    pip install -r requirements.txt
+
+Here are additional commands that you might find useful 
+
+1. **Create a virtual environment** (recommended to isolate dependencies):
+   ```sh
+   python -m venv venv
+   source venv/bin/activate  # On Windows, use `venv\Scripts\activate`
+   ```
+
+2. **Upgrade pip** (to ensure you have the latest version):
+   ```sh
+   pip install --upgrade pip
+   ```
+
+3. **Install the required packages** from `requirements.txt`:
+   ```sh
+   pip install -r requirements.txt
+   ```
+
+4. **Run the script** (if applicable):
+   ```sh
+   python script_name.py  # Replace 'script_name.py' with the actual script name
+   ```
+
+These commands should help you set up and run the Python script in the repository. If you have any specific requirements or encounter any issues, feel free to ask!
+
